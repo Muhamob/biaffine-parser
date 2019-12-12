@@ -6,8 +6,8 @@ from parser.utils.field import Field
 
 CoNLL = namedtuple(typename='CoNLL',
                    field_names=['ID', 'FORM', 'LEMMA', 'CPOS', 'POS',
-                                'FEATS', 'HEAD', 'DEPREL', 'PHEAD', 'PDEPREL'],
-                   defaults=[None]*10)
+                                'FEATS', 'HEAD', 'DEPREL', 'PHEAD', 'PDEPREL'],)
+CoNLL.__new__.__defaults__ = [None]*10
 
 
 class Sentence(object):
