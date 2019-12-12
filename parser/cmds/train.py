@@ -103,6 +103,13 @@ class Train(CMD):
             total_time += t
             if epoch - best_e >= args.patience:
                 break
+        
+        if hasattr(self.model, 'module'):
+            self.model.module.save(args.model)
+        else:
+            self.model.save(args.model)
+        print(f"{t}s elapsed (saved)\n")
+
         self.model = Model.load(args.model)
         loss, metric = self.evaluate(test.loader)
 
